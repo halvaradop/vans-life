@@ -20,6 +20,7 @@ const Button = ({ className, children, color, size, onClick }: Props ) => {
         "cyan-100": "text-white border-cyan bg-cyan"
     }
     const sizeVariant: Variant = {
+        sm: "h-7 px-2 text-sm font-medium border rounded-[0.3rem]",
         md: "h-9 px-4 text-base font-medium border rounded-lg",
         base: "h-10 px-4 text-base font-bold border rounded-lg",
         base2: "h-10 text-base font-medium underline decoration-1 decoration-gray underline-offset-2"
@@ -31,6 +32,10 @@ const Button = ({ className, children, color, size, onClick }: Props ) => {
             {children}
         </button>
     )
+}
+
+Button.defaultProps = {
+    className: ""
 }
 
 export { Button }

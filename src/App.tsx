@@ -7,10 +7,12 @@ import { VanDetail } from "./pages/VanDetail"
 import { Van } from "./interfaces/types"
 import { getAllVans } from "./service/getAllVans"
 import { Layout } from "./components/Layout"
-import { Host } from "./pages/Host"
-import { HostDashboard } from "./pages/Dashboard"
-import { Reviews } from "./pages/Reviews"
-import { Income } from "./pages/Income"
+import { HostLayout } from "./pages/HostLayout"
+import { Dashboard } from "./pages/host/Dashboard"
+import { Reviews } from "./pages/host/Reviews"
+import { Income } from "./pages/host/Income"
+import { HostVans } from "./pages/host/HostVans"
+import { HostVanDetail } from "./pages/host/HostVanDetail"
 
 
 const App = () => {
@@ -24,16 +26,23 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/vans" element={<Vans vanList={vanList} />} />
-                    <Route path="/vans/:id" element={<VanDetail />} />
-                    <Route path="/host" element={<Host />}>
-                        <Route path="dashboard" element={<HostDashboard />} />
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="vans">
+                        <Route index element={<Vans vanList={vanList} />} />
+                        <Route path=":id" element={<VanDetail />} />
+                    </Route>
+                    <Route path="host" element={<HostLayout />}>
+                        <Route index element={<Dashboard />} />
                         <Route path="income" element={<Income />} />
-                        <Route path="vans" />
                         <Route path="reviews" element={<Reviews />} />
+                        <Route path="vans" element={<HostVans />} />
+                        <Route path="vans/:id" element={<HostVanDetail />}>
+                            <Route index element />
+                            <Route path="pricing" element />
+                            <Route path="photos" element />
+                        </Route>
                     </Route>
                 </Route>
             </Routes>

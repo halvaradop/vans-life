@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      minHeight: {
+        main: 'calc(100vh - 8rem)'
+      },
       height: {
         main: 'calc(100vh - 8rem)'
       },
@@ -33,7 +36,7 @@ export default {
         }
       },
       backgroundImage: {
-        home: "url('./src/assets/home.png')"
+        home: "url('/src/assets/home.png')"
       }
     },
   },

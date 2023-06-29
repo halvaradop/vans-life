@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import { Button } from "../components/Button"
+import { WidthLayout } from "../components/WidthLayout"
 import aboutImage from "../assets/about.png"
 
 const About = () => {
     return (
         <main>
             <img className="w-full" src={aboutImage} alt="image" />
-            <section className="w-11/12 mx-auto my-8">
+            <WidthLayout className="py-8">
                 <article className="text-base">
                     <h1 className="text-3xl/8 font-bold">Don’t squeeze in a sedan when you could relax in a van.</h1>
                     <p className="mt-7 mb-4">
@@ -26,7 +27,7 @@ const About = () => {
                         <Link to="/vans">Explore our vans</Link>
                     </Button>
                 </article>
-            </section>
+            </WidthLayout>
         </main>
     )
 }

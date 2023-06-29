@@ -8,9 +8,9 @@ const Header = () => {
                     <Link to="/"># NAVLIFE</Link>
                 </h1>
                 <ul className="flex gap-x-4 text-gray text-base font-medium">                
-                    <li><NavLink to="/host" className={({ isActive }) => isActive? "border-b-2 border-gray" : "" }>Host</NavLink></li>
-                    <li><NavLink to="/about" className={({ isActive }) => isActive? "border-b-2 border-gray" : "" }>About</NavLink></li>
-                    <li><NavLink to="/vans" className={({ isActive }) => isActive? "border-b-2 border-gray" : "" }>Vans</NavLink></li>
+                    <li><NavLink to="/host" className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Host</NavLink></li>
+                    <li><NavLink to="/about" className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>About</NavLink></li>
+                    <li><NavLink to="/vans" className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Vans</NavLink></li>
                 </ul>
             </nav>
         </header>

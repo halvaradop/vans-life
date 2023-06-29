@@ -18,9 +18,11 @@ const Vans = ({ vanList }: VansProps ) => {
                     <Button children="Clear filters" color="gray-100" size="base2" />
                 </div>
                 <section className="grid grid-cols-2 gap-5">
-                    {vanList.map(({ img, title, price, category }, key) => (
-                        <CardVans key={key} index={key +1} img={img} title={title} price={price} textButton={category}  />
-                    ))}
+                    {vanList.length > 0? (
+                        vanList.map(({ img, title, price, category }, key) => (
+                            <CardVans key={key} index={key +1} img={img} title={title} price={price} textButton={category}  />
+                        ))
+                    ) : <span>Error</span> }
                 </section>
             </div>
         </main>

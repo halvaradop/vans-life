@@ -1,21 +1,27 @@
+import { Link } from "react-router-dom"
+
 interface CardListedVanProps {
+    index: string,
     img: string,
     title: string, 
-    price: string
+    price: string,
+    isEdit?: boolean
 }
 
 
-const CardListedVan = ({ img, title, price }: CardListedVanProps ) => {
+const CardListedVan = ({ index, img, title, price, isEdit }: CardListedVanProps ) => {
     return (
-        <article className="text-black text-base rounded-md bg-white">
-            <figure className="flex items-center gap-x-5">
-                <img src={img} alt="image of a van" />
-                <figcaption className="">
-                    <h3 className="text-xl font-medium">{title}</h3>
-                    <span className="text-gray">{price}/day</span>
-                </figcaption>
-            </figure>
-            <span className="font-normal">Edit</span>
+        <article className="py-3 px-4 text-black text-base rounded-md bg-white">
+            <Link to={`/host/vans/${index}`}>
+                <figure className="flex items-center gap-x-3">
+                    <img className="w-16 rounded-md" src={img} alt="image of a van" />
+                    <figcaption className="">
+                        <h3 className="text-xl font-medium">{title}</h3>
+                        <span className="text-gray">{price}/day</span>
+                    </figcaption>
+                </figure>
+                {isEdit && <span className="font-normal">Edit</span>}
+            </Link>
         </article>
     )
 }

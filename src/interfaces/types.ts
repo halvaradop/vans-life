@@ -9,4 +9,5 @@ export interface Van {
     price: string,
     category: string,
     description: string
+    hostId: string,
 }
