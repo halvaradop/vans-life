@@ -1,10 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom"
-import { WidthLayout } from "../components/WidthLayout"
+import { WidthLayout } from "./WidthLayout"
+import { NavLinkClassName } from "../interfaces/types"
 
-interface NavLinkClassName {
-    isActive: boolean,
-    isPending?: boolean
-}
+
 
 const activeLink = ({ isActive }: NavLinkClassName ): string | undefined => {
     return isActive ? "text-black font-bold border-b-2 border-black" : ""

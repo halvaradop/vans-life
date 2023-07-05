@@ -22,3 +22,17 @@
         background-color: #161616;
     }
 }
+
+@layer utilities { 
+    button.simple-active {
+        @apply text-white border-orange-200 bg-orange-200;
+    }
+
+    button.luxury-active {
+        @apply text-white border-black bg-black;
+    }
+
+    button.rugged-active {
+        @apply text-white border-cyan bg-cyan;
+    }
+}

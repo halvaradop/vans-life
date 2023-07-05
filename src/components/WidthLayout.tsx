@@ -1,7 +1,5 @@
-interface WidthLayoutProps {
-    className?: string,
-    children: React.ReactNode
-}   
+import { WidthLayoutProps } from "../interfaces/props"
+
 
 const WidthLayout = ({ className, children }: WidthLayoutProps) => {
     return (

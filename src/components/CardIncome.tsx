@@ -1,7 +1,4 @@
-interface CardIncomeProps {
-    price: string,
-    date: string
-}
+import { CardIncomeProps } from "../interfaces/props"
 
 const CardIncome = ({ price, date }: CardIncomeProps) => {
     return (

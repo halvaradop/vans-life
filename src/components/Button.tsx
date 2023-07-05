@@ -1,15 +1,8 @@
-import { MouseEvent } from "react"
+import { ButtonProps } from "../interfaces/props"
 import { Variant } from "../interfaces/types"
 
-interface Props {
-    className?: string,
-    children: React.ReactNode,
-    color: string,
-    size: string,
-    onClick?(event: MouseEvent <HTMLButtonElement>): void
-}
 
-const Button = ({ className, children, color, size, onClick }: Props ) => {
+const Button = ({ className, children, color, size, onClick }: ButtonProps ) => {
     const colorVariants: Variant = {
         "gray-100": "text-gray border-gray",
         "orange-100": "text-black border-orange-100 bg-orange-100",

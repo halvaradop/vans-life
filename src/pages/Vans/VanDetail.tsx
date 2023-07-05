@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
-import { Button } from "../components/Button"
-import { getAllVans } from "../service/getAllVans"
-import { Van, Variant } from "../interfaces/types"
-import arrowLeft from "../assets/arrow-left.svg"
+import { Link, useLocation, useParams } from "react-router-dom"
+import { Button } from "../../components/Button"
+import { getAllVans } from "../../service/getAllVans"
+import { Van, Variant } from "../../interfaces/types"
+import arrowLeft from "../../assets/arrow-left.svg"
 
 const colorCategoryVans: Variant = {
     "simple": "orange-200",
@@ -13,8 +13,11 @@ const colorCategoryVans: Variant = {
 const colorCategoryVansDefault = "orange-200"
 
 const VanDetail = () => {
-
+    
     const { id } = useParams <string> ()
+    const { state } = useLocation()
+    const searchParams = new URLSearchParams(state?.search ?? "")
+    const typeParams = searchParams.get("type") ?? "all"
     const [vanDetail, setVanList] = useState <Van | null> (null)
 
     useEffect(() => {
@@ -23,21 +26,20 @@ const VanDetail = () => {
             .then(setVanList)
     }, [id])
     
-
     const findVan = (array: Array <Van>): Van | null => {
         return array.find(van => van.id === id) ?? null
     }
 
     return (
-        <main className="w-full pt-8 bg-beige">
-            {vanDetail ? (
+        <main className="w-full min-h-main pt-8 bg-beige">
+            { vanDetail ? (
                 <section className="w-11/12 mx-auto mb-20">
                     <Button className="flex items-center justify-center gap-x-3" color="black-200" size="base2">
                         <img src={arrowLeft} alt="icon arrow left" />
-                        <Link to="/vans">Back to all vans</Link>
+                        <Link to={{ pathname: "..", search: searchParams.toString() }} >Back to {typeParams} vans</Link>
                     </Button>
                     <article className="text-black">
-                        <img className="mt-10 mb-8 w-full rounded-lg" src={vanDetail.img} alt="image of a van" />
+                        <img className="mt-5 mb-8 w-full rounded-lg" src={vanDetail.img} alt="image of a van" />
                         <Button className="pointer-events-none" children={vanDetail.category} color={colorCategoryVans[vanDetail.category] ?? colorCategoryVansDefault} size="base" />
                         <h1 className="mt-3 text-2xl font-bold">{vanDetail.title}</h1>
                         <div className="my-2 flex items-center text-lg font-bold">
@@ -50,7 +52,7 @@ const VanDetail = () => {
                         </Button>
                     </article>
                 </section>
-            ) : <h2>Loading</h2>}
+            ) : <span className="text-black text-2xl font-bold italic text-center only:col-span-2">Loading...</span> }
         </main>
     )
 }

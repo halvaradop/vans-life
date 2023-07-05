@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { WidthLayout } from "../../components/WidthLayout"
-import start from "../../assets/star.svg"
 import { CardReview } from "../../components/CardReview"
+import start from "../../assets/star.svg"
 
 const reviewsList = [5, 4, 3, 2, 1]
 

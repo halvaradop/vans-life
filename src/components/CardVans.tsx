@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom"
 import { Button } from "./Button"
 import { Variant } from "../interfaces/types"
-
-interface CardVansProps {
-    index: number,
-    img: string,
-    title: string,
-    price: string,
-    textButton: string,
-    onClick?(id: number): void
-}
+import { CardVansProps } from "../interfaces/props"
 
 const colorCategoryVans: Variant = {
     "simple": "orange-200",
@@ -19,10 +11,10 @@ const colorCategoryVans: Variant = {
 const colorCategoryVansDefault = "orange-200"
 
 
-const CardVans = ({ index, img, title, price, textButton  }: CardVansProps ) => {
+const CardVans = ({ index, img, title, price, textButton, searchParams  }: CardVansProps ) => {
     return (
         <article>
-            <Link to={`/vans/${index}`}>
+            <Link to={`${index}`} state={{ search: searchParams.toString() }} >
                 <figure>
                     <img className="w-full aspect-square rounded-md" src={img} alt="picture of a vans" />
                     <figcaption className="flex flex-col items-start text-xl text-black">

@@ -1,11 +1,5 @@
 import start from "../assets/star.svg"
-
-interface CardReviewProps {
-    starts: number, 
-    username: string,
-    date: string,
-    commentary: string
-}
+import { CardReviewProps } from "../interfaces/props"
 
 const CardReview = ({ starts, username, date, commentary }: CardReviewProps ) => {
     const startList = new Array(starts).fill(0)

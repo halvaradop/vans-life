@@ -15,6 +15,7 @@ const colorCategoryVansDefault = "orange-200"
 
 
 const HostVanDetail = () => {
+
     const { id } = useParams <string> ()
     const [vanDetail, setVanDetail] = useState <Van | null> (null)
 
@@ -32,26 +33,29 @@ const HostVanDetail = () => {
         <WidthLayout>
             <Button className="flex items-center justify-center gap-x-3" color="black-200" size="base2">
                 <img src={arrowLeft} alt="icon arrow left" />
-                <Link to="/host/vans">Back to all vans</Link>
+                <Link to=".." relative="path">Back to all vans</Link>
             </Button>
             <section className="w-full p-4 rounded-lg bg-white">
                 <article className="flex items-center gap-x-5">
-                    <img className="w-2/6" src={vanDetail.img} alt="picture of a van" />
+                    <img className="w-2/6 rounded-md" src={vanDetail.img} alt="picture of a van" />
                     <div className="flex flex-col items-start text-black">
                         <Button className="w-auto" children={vanDetail?.category} color={colorCategoryVans[vanDetail.category] ?? colorCategoryVansDefault} size="sm" />
                         <h1 className="text-xl font-bold">{vanDetail?.title}</h1>
                         <p className="text-lg font-bold">${vanDetail?.price}/<span className="text-base font-medium">day</span></p>
                     </div>
                 </article>               
-                <ul className="mt-4 mb-5 flex items-center justify-start gap-x-5">
-                    <li><NavLink to={`/host/vans/${id}`} className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" } end>Details</NavLink></li>
-                    <li><NavLink to={`/host/vans/${id}/pricing`} className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Pricing</NavLink></li>
-                    <li><NavLink to={`/host/vans/${id}/photos`} className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Photos</NavLink></li>
-                </ul>          
-                <Outlet />  
+                <nav>
+                    <ul className="mt-4 mb-5 flex items-center justify-start gap-x-5">
+                        <li><NavLink to="." className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" } end>Details</NavLink></li>
+                        <li><NavLink to="pricing" className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Pricing</NavLink></li>
+                        <li><NavLink to="photos" className={({ isActive }) => isActive ? "border-b-2 border-gray" : "" }>Photos</NavLink></li>
+                    </ul>    
+                </nav>          
+                <Outlet context={{ vanDetail }}/>  
             </section>
         </WidthLayout>
     )
 }
+
 
 export { HostVanDetail }
